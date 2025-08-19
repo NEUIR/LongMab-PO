@@ -1,0 +1,10 @@
+Python==3.10.15
+torch==2.4.0
+transformers==4.45.1
+tqdm
+trl==0.8.6
+vllm==0.6.2
+sentence-transformers==3.4.1
+accelerate==1.0.0
+deepspeed==0.16.5
+peft==0.12.0
