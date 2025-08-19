@@ -1,0 +1,11 @@
+{
+  "llama3_longmab_dpo_data": {
+    "file_name": "./training_data/1500/step3_dpodata_prompt8192.jsonl",
+    "ranking": true,
+    "columns": {
+      "prompt": "prompt",
+      "chosen": "chosen",
+      "rejected": "rejected"
+    }
+  },
+}
