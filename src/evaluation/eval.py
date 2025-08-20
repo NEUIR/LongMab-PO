@@ -195,7 +195,7 @@ def inference(args):
     )
 
     for d in dataname:
-        path = base_path + f"{d}.jsonl"
+        path = base_path + f"/{d}.jsonl"
 
         with open(path, 'r') as file:
             data = [json.loads(line, object_hook=custom_json_decoder) for line in file]
@@ -206,14 +206,13 @@ def inference(args):
         dataset = llmDataset(data, tokenizer, args.max_input_len)
         dataloader = DataLoader(dataset=dataset, batch_size=args.batch_size, collate_fn=dataset.Collactor)
 
-        jsonl_output_path = args.output_dir + f"{model_name}/{d}" + f"/preds_{d}.jsonl"
+        jsonl_output_path = args.output_dir + f"/{model_name}/{d}" + f"/preds_{d}.jsonl"
 
-        log_path = args.output_dir + f"{model_name}/{d}" + f"/logs_{d}.txt"
+        log_path = args.output_dir + f"/{model_name}/{d}" + f"/logs_{d}.txt"
 
         os.makedirs(os.path.dirname(jsonl_output_path), exist_ok=True)
         os.makedirs(os.path.dirname(log_path), exist_ok=True)
 
-        # log = open(log_path, 'w')
         cnt = 0
         total_subem = 0
         total_em = 0
@@ -250,12 +249,12 @@ def inference(args):
                         qa_f1_score = F1_scorer(pred_ans, answers)
                         qa_subem_score = substring_exact_match_score(pred_ans, answers)
                     else:
-                        jsonl_outfile.write("No answer found in the response\n")
+                        logfile.write("No answer found in the response\n")
 
 
-                    jsonl_outfile.write(f"QA EM score: {qa_em_score}\n")
-                    jsonl_outfile.write(f"QA F1 score: {qa_f1_score:.4f}\n")
-                    jsonl_outfile.write(f"QA SubEM score: {qa_subem_score}\n")
+                    logfile.write(f"QA EM score: {qa_em_score}\n")
+                    logfile.write(f"QA F1 score: {qa_f1_score:.4f}\n")
+                    logfile.write(f"QA SubEM score: {qa_subem_score}\n")
 
                     total_subem += qa_subem_score
                     total_em += qa_em_score
@@ -264,13 +263,13 @@ def inference(args):
                     max_len = max(max_len, len(prompt))
 
                     if (cnt + 1) % 50 == 0:
-                        jsonl_outfile.write("*" * 50 + "\n")
-                        jsonl_outfile.write(f"Prompt Length: {total_len / (cnt + 1):.4f}\n")
-                        jsonl_outfile.write(f"Max Prompt Length: {max_len}\n")
-                        jsonl_outfile.write(f"Total QA EM: {total_em / (cnt + 1):.4f}\n")
-                        jsonl_outfile.write(f"Total QA F1: {total_f1 / (cnt + 1):.4f}\n")
-                        jsonl_outfile.write(f"Total QA SubEM: {total_subem / (cnt + 1):.4f}\n")
-                    jsonl_outfile.write("*" * 50 + "\n")
+                        logfile.write("*" * 50 + "\n")
+                        logfile.write(f"Prompt Length: {total_len / (cnt + 1):.4f}\n")
+                        logfile.write(f"Max Prompt Length: {max_len}\n")
+                        logfile.write(f"Total QA EM: {total_em / (cnt + 1):.4f}\n")
+                        logfile.write(f"Total QA F1: {total_f1 / (cnt + 1):.4f}\n")
+                        logfile.write(f"Total QA SubEM: {total_subem / (cnt + 1):.4f}\n")
+                    logfile.write("*" * 50 + "\n")
 
                     output_item = {
                         "id": id,
@@ -300,4 +299,3 @@ if __name__ == "__main__":
     parser.add_argument("--temperature", type=float, default=0.0)
     args = parser.parse_args()
     inference(args)
-
