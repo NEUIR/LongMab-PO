@@ -12,8 +12,8 @@ echo "Model Path $MODEL_PATH"
 echo "Running rollout from $START to $END"
 python rollout.py \
  --model_path $MODEL_PATH \
- --input_dir "../../data/training_data/${CHUNK_SIZE}/step1_passage2probe_${START}_${END}.jsonl" \
- --output_dir "../../data/training_data/${CHUNK_SIZE}/step2_rollout_top${TOP_K}_rounds${ROUNDS}_${START}_${END}.jsonl" \
+ --input_dir "../../data/train_data/${CHUNK_SIZE}/step1_passage2probe_${START}_${END}.jsonl" \
+ --output_dir "../../data/train_data/${CHUNK_SIZE}/step2_rollout_top${TOP_K}_rounds${ROUNDS}_${START}_${END}.jsonl" \
  --rounds $ROUNDS \
  --top_k $TOP_K \
  --init_method $INIT_METHOD
