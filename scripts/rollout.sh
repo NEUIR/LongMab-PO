@@ -1,12 +1,12 @@
 cd ../src/syn_po_data
-export MODEL_PATH="/data1/duanshaohua/hf_hub/models--meta-llama--Llama-3.1-8B-Instruct"
+export MODEL_PATH="meta-llama/Llama-3.1-8B-Instruct"
 export CHUNK_SIZE=1500
 export CUDA_VISIBLE_DEVICES=0
 export ROUNDS=4
 export TOP_K=4
 export INIT_METHOD="probe_similarity"
 export START=0
-export END=2000
+export END=5000
 
 echo "Model Path $MODEL_PATH"
 echo "Running rollout from $START to $END"
