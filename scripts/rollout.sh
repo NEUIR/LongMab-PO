@@ -2,7 +2,7 @@ cd ../src/syn_po_data
 export MODEL_PATH="meta-llama/Llama-3.1-8B-Instruct"
 export CHUNK_SIZE=1500
 export CUDA_VISIBLE_DEVICES=0
-export ROUNDS=4
+export ROUNDS=30
 export TOP_K=4
 export INIT_METHOD="probe_similarity"
 export START=0
