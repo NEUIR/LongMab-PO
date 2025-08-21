@@ -5,6 +5,6 @@ export MAX_PROMPT_LENGTH=8192
 
 python construct_po_data.py \
  --model_path $MODEL_PATH \
- --input_dir "../../data/train_data/1500/step2_rollout_top4_rounds4_0_5000.jsonl" \
+ --input_dir "../../data/train_data/1500/step2_rollout_top4_rounds30_0_5000.jsonl" \
  --output_dir "../../data/train_data/1500/step3_dpodata_prompt${MAX_PROMPT_LENGTH}.jsonl" \
  --max_prompt_length $MAX_PROMPT_LENGTH
