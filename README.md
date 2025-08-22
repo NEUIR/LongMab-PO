@@ -29,10 +29,10 @@ pip install -r requirements.txt
 ## Training LongMab-PO
 If you do not want to train the model, you can download models trained with [LongMab-PO](https://huggingface.co/collections/rocketduan/longmab-po-68a7241776ad26006038efa3) and skip this section to [Evaluation](#evaluation).
 
-If you want to use the ready-to-use synthetic preference data directly, you can download from [here](https://drive.google.com/drive/folders/1QJ63-90RIdjyKwAdCMZKLz5KiFfxEkoq?usp=sharing) and skip this section to [DPO Training](#3-dpo-training)
+If you want to use the ready-to-use synthetic preference data directly, you can download from [here](https://drive.google.com/drive/folders/1Mgqx54ZarGC5UR4CL4uRaoMBTq3VQKOf?ths=true) and skip this section to [DPO Training](#3-dpo-training)
 ### 1. Prepare the Training Data
 
-You can follow [SeaLong](https://github.com/SihengLi99/SEALONG/tree/main) to synthesize raw training data, or download the file from [here](https://drive.google.com/drive/folders/1QJ63-90RIdjyKwAdCMZKLz5KiFfxEkoq?usp=sharing) and place them in the `data/train_data/` directory.
+You can follow [SeaLong](https://github.com/SihengLi99/SEALONG/tree/main) to synthesize raw training data, or download the file from [here](https://drive.google.com/drive/folders/1Mgqx54ZarGC5UR4CL4uRaoMBTq3VQKOf?ths=true) and place them in the `data/train_data/` directory.
 **Each sample must contain the following four required fields:**
 
 ```json
@@ -69,7 +69,7 @@ bash qwen2_dpo.sh
 ```
 
 ## Evaluation
-We provide the evalation datasets [here](https://drive.google.com/drive/folders/1QJ63-90RIdjyKwAdCMZKLz5KiFfxEkoq?usp=sharing), or you can download from [LongBench](https://huggingface.co/datasets/zai-org/LongBench) and [InfiniteBench](https://huggingface.co/datasets/xinrongzhang2022/InfiniteBench). You should place the datasets in the `data/test_data/` directory. 
+We provide the evalation datasets [here](https://drive.google.com/drive/folders/1Mgqx54ZarGC5UR4CL4uRaoMBTq3VQKOf?ths=true), or you can download from [LongBench](https://huggingface.co/datasets/zai-org/LongBench) and [InfiniteBench](https://huggingface.co/datasets/xinrongzhang2022/InfiniteBench). You should place the datasets in the `data/test_data/` directory. 
 ```
 cd scripts
 bash eval.sh
